@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newstragram/screens/home_screen.dart';
 import 'package:newstragram/style/style.dart';
 
 void main() {
