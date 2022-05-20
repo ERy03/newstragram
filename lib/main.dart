@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newstragram/style/style.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
-        fontFamily: "Bold",
+        fontFamily: BoldFont,
       ),
       home: HomeScreen(),
     );
