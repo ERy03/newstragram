@@ -19,8 +19,24 @@ class NewsListViewModel extends ChangeNotifier {
   bool _isLoading = false;
   bool get isLoading => _isLoading;
 
-  getNews(
-    {required SearchType searchType, String? keyword, Category? category}) {
+  Future<void> getNews(
+    {required SearchType searchType, String? keyword, Category? category}) async{
+      _searchType = searchType;
+      _keyword = keyword ?? "";
+      _category = category ?? categories[0];
+
+      _isLoading = true;
+      notifyListeners();
+
+      await _repository.getNews(
+        searchType: _searchType,
+        keyword: _keyword,
+        category: _category
+      );
+
+      _isLoading = false;
+      notifyListeners();
+
       print("SearchType: $searchType / keyword: $keyword / category: ${category?.nameJp}");
     }
 }

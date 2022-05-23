@@ -44,9 +44,9 @@ class NewsListPage extends StatelessWidget {
   }
 
   //TODO
-  onRefresh(BuildContext context) {
+  Future<void> onRefresh(BuildContext context) async{
     final viewModel = context.read<NewsListViewModel>();
-    viewModel.getNews(
+    await viewModel.getNews(
       searchType: viewModel.searchType,
       keyword: viewModel.keyword,
       category: viewModel.category,
@@ -54,9 +54,9 @@ class NewsListPage extends StatelessWidget {
     print("Refreshing page");
   }
 
-  getKeywordNews(BuildContext context, keyword) {
+  Future<void> getKeywordNews(BuildContext context, keyword) async{
     final viewModel = context.read<NewsListViewModel>();
-    viewModel.getNews(
+    await viewModel.getNews(
       searchType: SearchType.KEYWORD,
       keyword: keyword,
       category: categories[0],
@@ -65,10 +65,10 @@ class NewsListPage extends StatelessWidget {
   }
 
   //TODO
-  getCategoryNews(BuildContext context, Category category) {
+  Future<void> getCategoryNews(BuildContext context, Category category) async{
     print("${category.nameJp}");
     final viewModel = context.read<NewsListViewModel>();
-    viewModel.getNews(
+    await viewModel.getNews(
       searchType: SearchType.CATEGORY,
       category: category,
     );
