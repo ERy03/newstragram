@@ -7,8 +7,27 @@ class NewsListPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Container(),
+        floatingActionButton: FloatingActionButton(
+          child: Icon(Icons.refresh),
+          tooltip: "更新",
+          onPressed: () => onRefresh(context),
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              //TODO Search bar
+              SearchBar(),
+              //TODO Category chip
+              CategoryChips(),
+              //TODO Show Articles
+              CircularProgressIndicator(),
+            ],
+          ),
+        ),
       ),
     );
   }
+
+  onRefresh(BuildContext context) {}
 }
