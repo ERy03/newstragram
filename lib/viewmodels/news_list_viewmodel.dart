@@ -14,4 +14,9 @@ class NewsListViewModel extends ChangeNotifier {
 
   bool _isLoading = false;
   bool get isLoading => _isLoading;
+
+  getNews(
+    {required SearchType searchType, String? keyword, Category? category}) {
+      print("SearchType: $searchType / keyword: $keyword / category: ${category?.nameJp}");
+    }
 }
