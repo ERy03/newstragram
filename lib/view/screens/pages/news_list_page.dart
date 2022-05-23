@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newstragram/data/search_type.dart';
 import 'package:newstragram/view/components/category_chips.dart';
 import 'package:newstragram/view/components/search_bar.dart';
 
@@ -45,6 +46,7 @@ class NewsListPage extends StatelessWidget {
   }
 
   getKeywordNews(BuildContext context, keyword) {
+    SearchType type = SearchType.CATEGORY;
     print("${keyword}");
   }
 
