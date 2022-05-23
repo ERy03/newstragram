@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newstragram/view/components/category_chips.dart';
 import 'package:newstragram/view/components/search_bar.dart';
 
 class NewsListPage extends StatelessWidget {
@@ -21,7 +22,10 @@ class NewsListPage extends StatelessWidget {
                 onSearch: (keyword) => getKeywordNews(context, keyword),
               ),
               //TODO Category chip
-              // CategoryChips(),
+              CategoryChips(
+                onCategorySelected: (category) =>
+                    getCategoryNews(context, category),
+              ),
               //TODO Show Articles
               Expanded(
                 child: Center(
@@ -42,5 +46,10 @@ class NewsListPage extends StatelessWidget {
 
   getKeywordNews(BuildContext context, keyword) {
     print("${keyword}");
+  }
+
+  //TODO
+  getCategoryNews(BuildContext context, category) {
+    print("${category.nameJp}");
   }
 }

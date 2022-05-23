@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:newstragram/data/category_info.dart';
 
-class CategoryChip extends StatefulWidget {
-  const CategoryChip({Key? key}) : super(key: key);
+class CategoryChips extends StatefulWidget {
+  final ValueChanged onCategorySelected;
+  CategoryChips({required this.onCategorySelected});
 
   @override
-  State<CategoryChip> createState() => _CategoryChipState();
+  State<CategoryChips> createState() => _CategoryChipsState();
 }
 
-class _CategoryChipState extends State<CategoryChip> {
+class _CategoryChipsState extends State<CategoryChips> {
   var value = 0;
   @override
   Widget build(BuildContext context) {
     return Wrap(
+      spacing: 4.0,
       children: List<Widget>.generate(categories.length, (int index) {
         return ChoiceChip(
           label: Text(categories[index].nameJp),
@@ -20,6 +22,7 @@ class _CategoryChipState extends State<CategoryChip> {
           onSelected: (bool isSelected) {
             setState(() {
               value = isSelected ? index : 0;
+              widget.onCategorySelected(categories[index]);
             });
           },
         );
