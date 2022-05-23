@@ -11,4 +11,7 @@ class NewsListViewModel extends ChangeNotifier {
 
   String _keyword = "";
   String get keyword => _keyword;
+
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
 }
