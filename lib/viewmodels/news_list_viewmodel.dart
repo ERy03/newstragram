@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:newstragram/data/category_info.dart';
 import 'package:newstragram/data/search_type.dart';
+import 'package:newstragram/repository/news_repository.dart';
 
 class NewsListViewModel extends ChangeNotifier {
+
+  final NewsRepository _repository = NewsRepository();
+
   SearchType _searchType = SearchType.CATEGORY;
   SearchType get searchType => _searchType;
 
