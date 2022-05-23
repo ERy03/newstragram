@@ -17,7 +17,9 @@ class NewsListPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              SearchBar(),
+              SearchBar(
+                onSearch: (keyword) => getKeywordNews(context, keyword),
+              ),
               //TODO Category chip
               // CategoryChips(),
               //TODO Show Articles
@@ -34,5 +36,11 @@ class NewsListPage extends StatelessWidget {
   }
 
   //TODO
-  onRefresh(BuildContext context) {}
+  onRefresh(BuildContext context) {
+    print("Refreshing page");
+  }
+
+  getKeywordNews(BuildContext context, keyword) {
+    print("${keyword}");
+  }
 }

@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 class SearchBar extends StatelessWidget {
 
   final TextEditingController _textEditingController = TextEditingController();
+  final ValueChanged onSearch;
+
+  SearchBar({required this.onSearch});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +17,7 @@ class SearchBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: TextField(
+          onSubmitted: onSearch,
           maxLines: 1,
           controller: _textEditingController,
            decoration: InputDecoration(
