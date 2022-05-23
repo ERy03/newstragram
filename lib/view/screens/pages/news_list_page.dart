@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newstragram/view/components/search_bar.dart';
 
 class NewsListPage extends StatelessWidget {
   const NewsListPage({Key? key}) : super(key: key);
@@ -16,8 +17,7 @@ class NewsListPage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              //TODO Search bar
-              // SearchBar(),
+              SearchBar(),
               //TODO Category chip
               // CategoryChips(),
               //TODO Show Articles
