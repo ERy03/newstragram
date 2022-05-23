@@ -17,11 +17,15 @@ class NewsListPage extends StatelessWidget {
           child: Column(
             children: [
               //TODO Search bar
-              SearchBar(),
+              // SearchBar(),
               //TODO Category chip
-              CategoryChips(),
+              // CategoryChips(),
               //TODO Show Articles
-              CircularProgressIndicator(),
+              Expanded(
+                child: Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ),
             ],
           ),
         ),
@@ -29,5 +33,6 @@ class NewsListPage extends StatelessWidget {
     );
   }
 
+  //TODO
   onRefresh(BuildContext context) {}
 }
