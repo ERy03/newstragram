@@ -21,7 +21,21 @@ class HeadLinePage extends StatelessWidget {
           builder: (context, model, child) {
             return PageView.builder(
               controller: PageController(),
-              itemBuilder: null,
+              itemCount: model.articles.length,
+              itemBuilder: (context, index) {
+                final article = model.articles[index];
+                return Container(
+                  color: Colors.blueAccent,
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Text(article.title ?? ""),
+                        Text(article.description ?? ""),
+                      ],
+                    ),
+                  ),
+                );
+              },
             );
           },
         ),
