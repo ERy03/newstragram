@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newstragram/models/model/news_model.dart';
+import 'package:newstragram/view/components/article_tile_desc.dart';
 import 'package:newstragram/view/components/image_from_url.dart';
 
 class ArticleTile extends StatelessWidget {
@@ -32,12 +33,11 @@ class ArticleTile extends StatelessWidget {
               ),
               Expanded(
                 flex: 3,
-                child: Column(
-                  children: [
-                    Text(article.title ?? ""),
-                    Text(article.publishDate ?? ""),
-                    Text(article.description ?? ""),
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ArticleTileDesc(
+                    article: article,
+                  ),
                 ),
               )
             ],
