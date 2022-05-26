@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newstragram/data/category_info.dart';
 import 'package:newstragram/data/search_type.dart';
+import 'package:newstragram/view/components/article_tile.dart';
 import 'package:newstragram/view/components/category_chips.dart';
 import 'package:newstragram/view/components/search_bar.dart';
 import 'package:newstragram/viewmodels/news_list_viewmodel.dart';
@@ -37,8 +38,19 @@ class NewsListPage extends StatelessWidget {
               ),
               //TODO Show Articles
               Expanded(
-                child: Center(
-                  child: CircularProgressIndicator(),
+                child: Consumer<NewsListViewModel>(
+                  builder: (context, model, child) {
+                    return model.isLoading
+                      ? Center(child: CircularProgressIndicator(),)
+                      : ListView.builder(
+                        itemCount: model.articles.length,
+                        itemBuilder: (context, int position) =>
+                          ArticleTile(
+                            article: model.articles[position],
+                            onArticleCLicked: (article) => _openArticleWebPage(article, context),
+                          )
+                      );
+                  },
                 ),
               ),
             ],
@@ -77,5 +89,9 @@ class NewsListPage extends StatelessWidget {
       searchType: SearchType.CATEGORY,
       category: category,
     );
+  }
+
+  _openArticleWebPage(article, BuildContext context) {
+    print("${article.url}");
   }
 }

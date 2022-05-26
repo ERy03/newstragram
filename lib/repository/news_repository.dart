@@ -9,7 +9,7 @@ import 'package:newstragram/models/model/news_model.dart';
 
 class NewsRepository {
 
-  static const BASE_URL = "https://newsapi.org/v2/top-headlines?country=us";
+  static const BASE_URL = "https://newsapi.org/v2/top-headlines?country=jp";
   static const API_KEY = "c27b14cba77046f984200c8c0e486afb";
 
   Future<List<Article>> getNews({
