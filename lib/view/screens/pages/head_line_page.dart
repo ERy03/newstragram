@@ -17,10 +17,13 @@ class HeadLinePage extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          child: Center(
-            child: Text("Head Line"),
-          ),
+        body: Consumer<HeadLineViewModel>(
+          builder: (context, model, child) {
+            return PageView.builder(
+              controller: PageController(),
+              itemBuilder: null,
+            );
+          },
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.refresh),
