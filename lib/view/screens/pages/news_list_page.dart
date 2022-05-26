@@ -92,6 +92,6 @@ class NewsListPage extends StatelessWidget {
   }
 
   _openArticleWebPage(article, BuildContext context) {
-    print("${article.url}");
+    print("${article.publishDate}");
   }
 }

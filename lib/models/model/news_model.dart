@@ -17,7 +17,7 @@ final String? title;
 final String? description;
 final String? url;
 final String? urlToImage;
-@JsonKey(name: "PublishedAt") final String? publishDate;
+@JsonKey(name: "publishedAt") final String? publishDate;
 final String? content;
 
 
