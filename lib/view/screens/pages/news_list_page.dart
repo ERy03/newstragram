@@ -11,6 +11,11 @@ class NewsListPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<NewsListViewModel>();
+
+    if (!viewModel.isLoading && viewModel.articles.isEmpty){
+      Future(() => viewModel.getNews(searchType: SearchType.CATEGORY, category: categories[0]));
+    }
     return SafeArea(
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
