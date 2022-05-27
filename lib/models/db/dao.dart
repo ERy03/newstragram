@@ -16,4 +16,11 @@ class NewsDao extends DatabaseAccessor<MyDatabase> with _$NewsDaoMixin{
   }
 
   Future<List<ArticleRecord>> get articleFromDB => select(articleRecords).get();
+
+  Future<List<ArticleRecord>> insertAndReadNewsFromDB(
+    List<ArticleRecord> articles) => transaction(() async {
+      await clearDB();
+      await insertDB(articles);
+      return await articleFromDB;
+    });
 }
