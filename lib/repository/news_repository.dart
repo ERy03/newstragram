@@ -7,6 +7,7 @@ import 'package:newstragram/data/search_type.dart';
 import 'package:newstragram/main.dart';
 import 'package:newstragram/models/db/database.dart';
 import 'package:newstragram/models/model/news_model.dart';
+import 'package:newstragram/util/extensions.dart';
 
 
 class NewsRepository {
@@ -53,8 +54,8 @@ class NewsRepository {
     final dao = myDatabase.newsDao;
     final articles = News.fromJson(responseBody).articles;
 
-    await dao.insertAndReadNewsFromDB(articles);
+    final articleRecords = await dao.insertAndReadNewsFromDB(articles.toArticleRecords(articles));
 
-    return;
+    return articleRecords.toArticles(articleRecords);
   }
 }

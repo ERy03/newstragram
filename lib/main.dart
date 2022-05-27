@@ -6,7 +6,10 @@ import 'package:newstragram/viewmodels/head_line_viewmodel.dart';
 import 'package:newstragram/viewmodels/news_list_viewmodel.dart';
 import 'package:provider/provider.dart';
 
+late MyDatabase myDatabase;
+
 void main() {
+  myDatabase = MyDatabase();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
