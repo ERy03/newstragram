@@ -4,6 +4,7 @@ import 'package:newstragram/data/search_type.dart';
 import 'package:newstragram/view/components/article_tile.dart';
 import 'package:newstragram/view/components/category_chips.dart';
 import 'package:newstragram/view/components/search_bar.dart';
+import 'package:newstragram/view/screens/web_page_screen.dart';
 import 'package:newstragram/viewmodels/news_list_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -92,6 +93,12 @@ class NewsListPage extends StatelessWidget {
   }
 
   _openArticleWebPage(article, BuildContext context) {
-    print("${article.publishDate}");
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => NewsWebPageScreen(
+          article: article,
+        )
+      )
+    );
   }
 }
