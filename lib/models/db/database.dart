@@ -11,3 +11,8 @@ class ArticleRecords extends Table {
   TextColumn get content => text()();
 
 }
+
+@DriftDatabase(tables: [ArticleRecords])
+class MyDatabase {
+
+}
