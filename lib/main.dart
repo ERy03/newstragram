@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newstragram/di/providers.dart';
-import 'package:newstragram/models/db/database.dart';
 import 'package:newstragram/style/style.dart';
 import 'package:newstragram/view/screens/home_screen.dart';
-import 'package:newstragram/viewmodels/head_line_viewmodel.dart';
-import 'package:newstragram/viewmodels/news_list_viewmodel.dart';
 import 'package:provider/provider.dart';
 
 void main() {

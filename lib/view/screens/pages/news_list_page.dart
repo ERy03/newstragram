@@ -32,12 +32,12 @@ class NewsListPage extends StatelessWidget {
               SearchBar(
                 onSearch: (keyword) => getKeywordNews(context, keyword),
               ),
-              //TODO Category chip
+
               CategoryChips(
                 onCategorySelected: (category) =>
                     getCategoryNews(context, category),
               ),
-              //TODO Show Articles
+
               Expanded(
                 child: Consumer<NewsListViewModel>(
                   builder: (context, model, child) {
@@ -61,7 +61,7 @@ class NewsListPage extends StatelessWidget {
     );
   }
 
-  //TODO
+
   Future<void> onRefresh(BuildContext context) async{
     final viewModel = context.read<NewsListViewModel>();
     await viewModel.getNews(
@@ -82,7 +82,6 @@ class NewsListPage extends StatelessWidget {
     print("${keyword}");
   }
 
-  //TODO
   Future<void> getCategoryNews(BuildContext context, Category category) async{
     print("${category.nameJp}");
     final viewModel = context.read<NewsListViewModel>();

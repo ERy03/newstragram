@@ -1,12 +1,8 @@
 import 'dart:convert';
-
-import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:newstragram/data/category_info.dart';
 import 'package:newstragram/data/search_type.dart';
-import 'package:newstragram/main.dart';
 import 'package:newstragram/models/db/dao.dart';
-import 'package:newstragram/models/db/database.dart';
 import 'package:newstragram/models/model/news_model.dart';
 import 'package:newstragram/util/extensions.dart';
 

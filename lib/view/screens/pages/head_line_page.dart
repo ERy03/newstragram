@@ -63,7 +63,7 @@ class HeadLinePage extends StatelessWidget {
     );
   }
 
-  //TODO
+
   onRefresh(BuildContext context) async{
     final viewModel = context.read<HeadLineViewModel>();
     await viewModel.getHeadLines(searchType: SearchType.HEAD_LINE);

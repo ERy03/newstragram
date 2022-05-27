@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:newstragram/data/category_info.dart';
 import 'package:newstragram/data/search_type.dart';
 import 'package:newstragram/models/model/news_model.dart';
 import 'package:newstragram/repository/news_repository.dart';

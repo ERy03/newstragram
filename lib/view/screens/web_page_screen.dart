@@ -16,7 +16,7 @@ class NewsWebPageScreen extends StatelessWidget {
           title: Text(article.title ?? ""),
           centerTitle: true,
         ),
-        //TODO
+
         body: WebView(
           initialUrl: article.url,
           javascriptMode: JavascriptMode.unrestricted,
