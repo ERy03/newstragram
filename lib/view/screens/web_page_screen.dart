@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newstragram/models/model/news_model.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class NewsWebPageScreen extends StatelessWidget {
 
@@ -16,7 +17,10 @@ class NewsWebPageScreen extends StatelessWidget {
           centerTitle: true,
         ),
         //TODO
-        body: Container(),
+        body: WebView(
+          initialUrl: article.url,
+          javascriptMode: JavascriptMode.unrestricted,
+        ),
       ),
     );
   }
