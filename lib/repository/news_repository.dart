@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:newstragram/data/category_info.dart';
 import 'package:newstragram/data/search_type.dart';
 import 'package:newstragram/main.dart';
+import 'package:newstragram/models/db/dao.dart';
 import 'package:newstragram/models/db/database.dart';
 import 'package:newstragram/models/model/news_model.dart';
 import 'package:newstragram/util/extensions.dart';
@@ -14,6 +15,10 @@ class NewsRepository {
 
   static const BASE_URL = "https://newsapi.org/v2/top-headlines?country=jp";
   static const API_KEY = "c27b14cba77046f984200c8c0e486afb";
+
+  final NewsDao _dao;
+
+  NewsRepository({dao}): _dao = dao;
 
   Future<List<Article>> getNews({
     required SearchType searchType,
@@ -51,10 +56,9 @@ class NewsRepository {
   }
 
   Future<List<Article>> insertAndReadNewsFromDB(responseBody) async{
-    final dao = myDatabase.newsDao;
     final articles = News.fromJson(responseBody).articles;
 
-    final articleRecords = await dao.insertAndReadNewsFromDB(articles.toArticleRecords(articles));
+    final articleRecords = await _dao.insertAndReadNewsFromDB(articles.toArticleRecords(articles));
 
     return articleRecords.toArticles(articleRecords);
   }
