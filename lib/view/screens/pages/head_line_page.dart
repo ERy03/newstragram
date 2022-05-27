@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:newstragram/data/search_type.dart';
+import 'package:newstragram/view/components/page_transformer.dart';
 import 'package:newstragram/viewmodels/head_line_viewmodel.dart';
 import 'package:provider/provider.dart';
 
@@ -19,21 +20,30 @@ class HeadLinePage extends StatelessWidget {
       child: Scaffold(
         body: Consumer<HeadLineViewModel>(
           builder: (context, model, child) {
-            return PageView.builder(
-              controller: PageController(),
-              itemCount: model.articles.length,
-              itemBuilder: (context, index) {
-                final article = model.articles[index];
-                return Container(
-                  color: Colors.blueAccent,
-                  child: Center(
-                    child: Column(
-                      children: [
-                        Text(article.title ?? ""),
-                        Text(article.description ?? ""),
-                      ],
-                    ),
-                  ),
+            return PageTransformer(
+              pageViewBuilder: (context, pageVisibilityResolver){
+              return PageView.builder(
+                controller: PageController(),
+                  itemCount: model.articles.length,
+                  itemBuilder: (context, index) {
+                    final article = model.articles[index];
+                    final pageVisibility = pageVisibilityResolver.resolvePageVisibility(index);
+                    final visibleFraction = pageVisibility.visibleFraction;
+                    return Opacity(
+                      opacity: visibleFraction,
+                      child: Container(
+                        color: Colors.blueAccent,
+                        child: Center(
+                          child: Column(
+                            children: [
+                              Text(article.title ?? ""),
+                              Text(article.description ?? ""),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                 );
               },
             );
