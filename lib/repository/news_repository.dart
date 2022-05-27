@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:newstragram/data/category_info.dart';
 import 'package:newstragram/data/search_type.dart';
+import 'package:newstragram/main.dart';
+import 'package:newstragram/models/db/database.dart';
 import 'package:newstragram/models/model/news_model.dart';
 
 
@@ -39,10 +41,20 @@ class NewsRepository {
 
     if (response.statusCode == 200) {
       final responseBody = response.body;
-      results = News.fromJson(jsonDecode(responseBody)).articles;
+      // results = News.fromJson(jsonDecode(responseBody)).articles;
+      results = await insertAndReadNewsFromDB(jsonDecode(responseBody));
     } else {
       throw Exception("falied to load news");
     }
     return results;
+  }
+
+  Future<List<Article>> insertAndReadNewsFromDB(responseBody) async{
+    final dao = myDatabase.newsDao;
+    final articles = News.fromJson(responseBody).articles;
+
+    await dao.insertAndReadNewsFromDB(articles);
+
+    return;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newstragram/models/db/database.dart';
 import 'package:newstragram/style/style.dart';
 import 'package:newstragram/view/screens/home_screen.dart';
 import 'package:newstragram/viewmodels/head_line_viewmodel.dart';
@@ -13,7 +14,7 @@ void main() {
       ),
       ChangeNotifierProvider(
         create: (_) => HeadLineViewModel(),
-      )
+      ),
     ],
       child: MyApp(),
     ),
