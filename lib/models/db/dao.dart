@@ -14,4 +14,6 @@ class NewsDao extends DatabaseAccessor<MyDatabase> with _$NewsDaoMixin{
       batch.insertAll(articleRecords, articles);
     });
   }
+
+  Future<List<ArticleRecord>> get articleFromDB => select(articleRecords).get();
 }
