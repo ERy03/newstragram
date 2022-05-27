@@ -1,6 +1,10 @@
 # newstragram
 
-A new Flutter project.
+Flutter project connected to news api. 
+Created using MVVM and DI. 
+
+<img width="276" alt="Screen Shot 2022-05-27 at 18 15 31" src="https://user-images.githubusercontent.com/76512208/170670235-d54b7702-7478-4326-a759-4d18da403870.png">
+
 
 ## Getting Started
 
