@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:newstragram/data/search_type.dart';
+import 'package:newstragram/models/model/news_model.dart';
+import 'package:newstragram/view/components/head_line_item.dart';
 import 'package:newstragram/view/components/page_transformer.dart';
 import 'package:newstragram/viewmodels/head_line_viewmodel.dart';
 import 'package:provider/provider.dart';
@@ -29,19 +31,10 @@ class HeadLinePage extends StatelessWidget {
                     final article = model.articles[index];
                     final pageVisibility = pageVisibilityResolver.resolvePageVisibility(index);
                     final visibleFraction = pageVisibility.visibleFraction;
-                    return Opacity(
-                      opacity: visibleFraction,
-                      child: Container(
-                        color: Colors.blueAccent,
-                        child: Center(
-                          child: Column(
-                            children: [
-                              Text(article.title ?? ""),
-                              Text(article.description ?? ""),
-                            ],
-                          ),
-                        ),
-                      ),
+                    return HeadLineItem(
+                      article: model.articles[index],
+                      pageVisibility: pageVisibility,
+                      onArticleCLicked: (article) => _openArticleWebPage(context, article),
                     );
                   },
                 );
@@ -61,5 +54,9 @@ class HeadLinePage extends StatelessWidget {
   onRefresh(BuildContext context) async{
     final viewModel = context.read<HeadLineViewModel>();
     await viewModel.getHeadLines(searchType: SearchType.HEAD_LINE);
+  }
+
+  _openArticleWebPage(BuildContext context, Article article) {
+    print("HeadLinePage ${article.url}");
   }
 }
