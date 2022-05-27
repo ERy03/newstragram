@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class AboutUsPage extends StatefulWidget {
@@ -18,12 +19,16 @@ class _AboutUsPageState extends State<AboutUsPage> {
           child: AnimatedContainer(
             width: _selected ? 300 : 50,
             height: _selected ? 200 : 25,
-            child: _selected
-              ? Text("Newstagram", style: TextStyle(fontSize: 40.0),)
-              : Text("Newstagram", style: TextStyle(fontSize: 6.0),),
             alignment: _selected ? Alignment.center : Alignment.topCenter,
             duration: Duration(milliseconds: 1000),
             curve: Curves.fastOutSlowIn,
+            child: AutoSizeText(
+              "Newstagram",
+              style: TextStyle(fontSize: 40.0),
+              minFontSize: 6.0,
+              maxLines: 1,
+              overflow: TextOverflow.visible,
+            ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
