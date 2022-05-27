@@ -8,4 +8,10 @@ class NewsDao extends DatabaseAccessor<MyDatabase> with _$NewsDaoMixin{
   NewsDao(MyDatabase db) : super(db);
 
   Future clearDB() => delete(articleRecords).go();
+
+  Future insertDB(List<ArticleRecord> articles) async {
+    await batch((batch){
+      batch.insertAll(articleRecords, articles);
+    });
+  }
 }
