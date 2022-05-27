@@ -20,27 +20,32 @@ class HeadLinePage extends StatelessWidget {
 
     return SafeArea(
       child: Scaffold(
-        body: Consumer<HeadLineViewModel>(
-          builder: (context, model, child) {
-            return PageTransformer(
-              pageViewBuilder: (context, pageVisibilityResolver){
-              return PageView.builder(
-                controller: PageController(),
-                  itemCount: model.articles.length,
-                  itemBuilder: (context, index) {
-                    final article = model.articles[index];
-                    final pageVisibility = pageVisibilityResolver.resolvePageVisibility(index);
-                    final visibleFraction = pageVisibility.visibleFraction;
-                    return HeadLineItem(
-                      article: model.articles[index],
-                      pageVisibility: pageVisibility,
-                      onArticleCLicked: (article) => _openArticleWebPage(context, article),
-                    );
-                  },
-                );
-              },
-            );
-          },
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Consumer<HeadLineViewModel>(
+            builder: (context, model, child) {
+              return PageTransformer(
+                pageViewBuilder: (context, pageVisibilityResolver){
+                return PageView.builder(
+                  controller: PageController(
+                    viewportFraction: 0.85
+                    ),
+                    itemCount: model.articles.length,
+                    itemBuilder: (context, index) {
+                      final article = model.articles[index];
+                      final pageVisibility = pageVisibilityResolver.resolvePageVisibility(index);
+                      final visibleFraction = pageVisibility.visibleFraction;
+                      return HeadLineItem(
+                        article: model.articles[index],
+                        pageVisibility: pageVisibility,
+                        onArticleCLicked: (article) => _openArticleWebPage(context, article),
+                      );
+                    },
+                  );
+                },
+              );
+            },
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.refresh),
