@@ -1,0 +1,12 @@
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+List globalProviders = [
+  ...independentModels,
+  ...dependentModels,
+  ...viewModels
+];
+
+List independentModels = [
+
+];
