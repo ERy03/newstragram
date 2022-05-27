@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:newstragram/di/providers.dart';
 import 'package:newstragram/models/db/database.dart';
 import 'package:newstragram/style/style.dart';
 import 'package:newstragram/view/screens/home_screen.dart';
@@ -11,14 +12,7 @@ late MyDatabase myDatabase;
 void main() {
   myDatabase = MyDatabase();
   runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider(
-        create: (_) => NewsListViewModel(),
-      ),
-      ChangeNotifierProvider(
-        create: (_) => HeadLineViewModel(),
-      ),
-    ],
+    providers: globalProviders,
       child: MyApp(),
     ),
   );
